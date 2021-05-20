@@ -7,6 +7,7 @@ from .models import Gallery, GalleryImage, Image
 class GalleryImageInline(admin.TabularInline):
     model = GalleryImage
     form = GalleryItemInlineForm
+    ordering = ['order']
     extra = 0
     raw_id_fields = ('image',)
 
