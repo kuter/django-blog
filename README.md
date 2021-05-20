@@ -37,7 +37,7 @@ start development server:
 $ python manage.py runserver
 ```
 
-;og into Django admin panel:
+ltog into Django admin panel:
 
 ```bash
 $ xdg-open http://localhost:8000/admin/
