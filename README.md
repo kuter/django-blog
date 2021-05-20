@@ -31,7 +31,13 @@ create superuser:
 $ python manage.py createsuperuser
 ```
 
-Log into Django admin panel:
+start development server:
+
+```bash
+$ python manage.py runserver
+```
+
+;og into Django admin panel:
 
 ```bash
 $ xdg-open http://localhost:8000/admin/
