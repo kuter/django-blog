@@ -131,3 +131,51 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "console": {
+            # exact format is not important, this is the minimum information
+            "format": "%(asctime)s %(name)-12s %(levelname)-8s %(message)s",
+        },
+        "simple": {
+            "format": "%(levelname)s %(asctime)s %(name)s.%(funcName)s:%(lineno)s- %(message)s",
+        },
+    },
+    "handlers": {
+        # Include the default Django email handler for errors
+        # This is what you'd get without configuring logging at all.
+        # 'mail_admins': {
+        #     'class': 'django.utils.log.AdminEmailHandler',
+        #     'level': 'ERROR',
+        #      # But the emails are plain text by default - HTML is nicer
+        #     'include_html': True,
+        # },
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "console",
+        },
+        # Log to a text file that can be rotated by logrotate
+        "logfile": {
+            "class": "logging.handlers.WatchedFileHandler",
+            "filename": BASE_DIR / "output.log",
+            "formatter": "simple",
+        },
+    },
+    "loggers": {
+        # Again, default Django configuration to email unhandled exceptions
+        "": {
+            "handlers": ["console", "logfile"],
+            "level": "NOTSET",
+            "propagate": True,
+        },
+        # Might as well log any errors anywhere else in Django
+        "galleries": {
+            "handlers": ["logfile"],
+            "level": "INFO",
+            "propagate": False,
+        },
+    },
+}
