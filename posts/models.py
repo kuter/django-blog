@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 from django_extensions.db.fields import AutoSlugField
@@ -14,3 +15,6 @@ class Post(TimeStampedModel, models.Model):
     class Meta:
         verbose_name = _('Post')
         verbose_name_plural = _('Posts')
+
+    def get_absolute_url(self):
+        return reverse('posts:detail', args=(self.pk, ))
