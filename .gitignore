@@ -114,4 +114,4 @@ yarn.lock
 # webpack stuff
 webpack-*.json
 
-^static/
+static/
