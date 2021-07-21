@@ -23,6 +23,7 @@ perform migrations:
 
 ```bash
 $ python manage.py migrate
+$ python manage.py collectstatic
 ```
 
 create superuser:

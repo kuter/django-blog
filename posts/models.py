@@ -14,3 +14,8 @@ class Post(TimeStampedModel, models.Model):
     class Meta:
         verbose_name = _('Post')
         verbose_name_plural = _('Posts')
+
+
+class Comment(TimeStampedModel, models.Model):
+    post = models.ForeignKey('Post', on_delete=models.CASCADE)
+    comment = models.TextField(_('comment'))
